@@ -18,5 +18,11 @@ namespace CadFuncionario.Domain.Entities
 
         public virtual Profissao Profissao { get; private set; }
         public virtual ICollection<Funcionario> Funcionarios { get; private set; }
+
+
+        public void AlterarPercentualAumento(decimal percentualAumento)
+        {
+            PercentualAumento = percentualAumento;
+        }
     }
 }

@@ -24,5 +24,20 @@ namespace CadFuncionario.Domain.Entities
         public DateTime DataNascimento { get; private set; }
 
         public virtual StepProfissao StepProfissao { get; private set; }
+
+        public void AlterarStep(Guid stepProfissaoId)
+        {
+            StepProfissaoId = stepProfissaoId;
+        }
+
+        public string ObterMensagemAniversario()
+        {
+            var dataAtual = DateTime.Now;
+
+            return dataAtual.Day == DataNascimento.Day && dataAtual.Month == DataNascimento.Month
+                ? $"Feliz aniversário! Parabéns pelos seus {DataNascimento.Year - dataAtual.Year} anos, " +
+                    "por favor hoje é dia de você pagar salgado!"
+                : null;
+        }
     }
 }

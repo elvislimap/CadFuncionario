@@ -1,3 +1,4 @@
+using CadFuncionario.Data.Maps;
 using CadFuncionario.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,10 @@ namespace CadFuncionario.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new ProfissaoMap());
+            builder.ApplyConfiguration(new StepProfissaoMap());
+            builder.ApplyConfiguration(new FuncionarioMap());
+
             base.OnModelCreating(builder);
         }
     }

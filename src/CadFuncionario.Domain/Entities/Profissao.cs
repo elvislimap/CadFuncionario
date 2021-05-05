@@ -17,5 +17,9 @@ namespace CadFuncionario.Domain.Entities
         public decimal SalarioBase { get; private set; }
 
         public virtual ICollection<StepProfissao> StepProfissoes { get; set; }
+
+        public void AlterarSalarioBase(decimal salarioBase) {
+            SalarioBase = salarioBase;
+        }
     }
 }
