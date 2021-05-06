@@ -4,7 +4,7 @@ namespace CadFuncionario.Domain.Entities
 {
     public class Funcionario
     {
-        public Funcionario(Guid stepProfissaoId, string cpf, string rg, string nome, string ctps, DateTime dataNascimento)
+        public Funcionario(Guid stepProfissaoId, string cpf, string rg, string nome, string ctps, DateTime? dataNascimento)
         {
             FuncionarioId = Guid.NewGuid();
             StepProfissaoId = stepProfissaoId;
