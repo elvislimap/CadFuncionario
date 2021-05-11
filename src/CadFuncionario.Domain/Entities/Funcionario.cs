@@ -30,6 +30,11 @@ namespace CadFuncionario.Domain.Entities
             StepProfissaoId = stepProfissaoId;
         }
 
+        public void AlterarDataNascimento(DateTime? dataNascimento)
+        {
+            DataNascimento = dataNascimento;
+        }
+
         public string ObterMensagemAniversario()
         {
             if (DataNascimento == null)

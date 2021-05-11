@@ -53,7 +53,55 @@ namespace CadFuncionario.Domain.Tests.Entities
             Assert.Null(funcionario.ObterMensagemAniversario());
         }
 
-        // TODO: Continuar cenários...
+        [Fact(DisplayName = "Obter mensagem aniversário, quando o dia e o mês atual for diferente do aniversário")]
+        [Trait("Grupo", "Entities")]
+        public void Funcionario_ObterMensagemAniversario_DiaMes_Diferente()
+        {
+            // Arrange
+            var funcionario = GerarFuncionario();
+
+            if (funcionario.DataNascimento.Value.Day == DateTime.Now.Day)
+                funcionario.AlterarDataNascimento(funcionario.DataNascimento.Value.AddDays(-1));
+
+            // Act & Assert
+            Assert.Null(funcionario.ObterMensagemAniversario());
+        }
+
+        [Fact(DisplayName = "Obter mensagem aniversário com sucesso")]
+        [Trait("Grupo", "Entities")]
+        public void Funcionario_ObterMensagemAniversario_Sucesso()
+        {
+            // Arrange
+            var funcionario = GerarFuncionario(false);
+            var dataAtual = DateTime.Now;
+
+            funcionario.AlterarDataNascimento(
+                new DateTime(_faker.Random.Int(1990, 1999),
+                dataAtual.Month, dataAtual.Day));
+
+            // Act
+            var mensagemAniversario = funcionario.ObterMensagemAniversario();
+
+            // Assert
+            Assert.NotNull(mensagemAniversario);
+            Assert.NotEmpty(mensagemAniversario);
+            Assert.Contains("Feliz aniversário!", mensagemAniversario);
+        }
+
+        [Fact(DisplayName = "Alterar a data de nascimento")]
+        [Trait("Grupo", "Entities")]
+        public void Funcionario_AlterarDataNascimento()
+        {
+            // Arrange 
+            var funcionario = GerarFuncionario();
+            var dataNascimentoOriginal = funcionario.DataNascimento;
+
+            // Act
+            funcionario.AlterarDataNascimento(dataNascimentoOriginal.Value.AddDays(-80));
+
+            // Assert
+            Assert.NotEqual(dataNascimentoOriginal, funcionario.DataNascimento);
+        }
 
         private Funcionario GerarFuncionario(bool gerarDataNascimento = true)
         {
