@@ -4,6 +4,7 @@
     <ProjectReference Include="..\CadFuncionario.Data\CadFuncionario.Data.csproj" />
     <ProjectReference Include="..\CadFuncionario.Domain\CadFuncionario.Domain.csproj" />
     <ProjectReference Include="..\CadFuncionario.Validations\CadFuncionario.Validations.csproj" />
+    <ProjectReference Include="..\CadFuncionario.Core\CadFuncionario.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

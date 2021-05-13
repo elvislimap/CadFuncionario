@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadFuncionario.IoC", "src\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadFuncionario.Core", "src\CadFuncionario.Core\CadFuncionario.Core.csproj", "{8DAE0E91-0F99-451C-8EBA-91B76BC88F35}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadFuncionario.Application.Tests", "tests\CadFuncionario.Application.Tests\CadFuncionario.Application.Tests.csproj", "{79172189-9389-4737-A029-DFD8A7FE26A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +130,18 @@ Global
 		{8DAE0E91-0F99-451C-8EBA-91B76BC88F35}.Release|x64.Build.0 = Release|Any CPU
 		{8DAE0E91-0F99-451C-8EBA-91B76BC88F35}.Release|x86.ActiveCfg = Release|Any CPU
 		{8DAE0E91-0F99-451C-8EBA-91B76BC88F35}.Release|x86.Build.0 = Release|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Debug|x64.Build.0 = Debug|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Debug|x86.Build.0 = Debug|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Release|x64.ActiveCfg = Release|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Release|x64.Build.0 = Release|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Release|x86.ActiveCfg = Release|Any CPU
+		{79172189-9389-4737-A029-DFD8A7FE26A9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

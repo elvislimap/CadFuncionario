@@ -7,10 +7,11 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="Bogus" Version="33.0.2" />
-    <PackageReference Include="FluentValidation" Version="10.1.0"/>
+    <PackageReference Include="FluentValidation" Version="10.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\CadFuncionario.Domain\CadFuncionario.Domain.csproj" />
     <ProjectReference Include="..\..\src\CadFuncionario.Validations\CadFuncionario.Validations.csproj" />
+    <ProjectReference Include="..\..\src\CadFuncionario.Core\CadFuncionario.Core.csproj" />
   </ItemGroup>
 </Project>

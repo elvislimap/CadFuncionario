@@ -1,8 +1,9 @@
 using System;
+using CadFuncionario.Core.DomainObjects;
 
 namespace CadFuncionario.Domain.Entities
 {
-    public class Funcionario
+    public class Funcionario : Entity
     {
         public Funcionario(Guid stepProfissaoId, string cpf, string rg, string nome, string ctps, DateTime? dataNascimento)
         {

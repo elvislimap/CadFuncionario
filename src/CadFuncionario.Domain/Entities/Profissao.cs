@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using CadFuncionario.Core.DomainObjects;
 
 namespace CadFuncionario.Domain.Entities
 {
-    public class Profissao
+    public class Profissao : Entity
     {
         public Profissao(string descricao, decimal salarioBase)
         {

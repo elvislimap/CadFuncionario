@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using CadFuncionario.Core.DomainObjects;
 
 namespace CadFuncionario.Domain.Entities
 {
-    public class StepProfissao
+    public class StepProfissao : Entity
     {
         public StepProfissao(Guid profissaoId, decimal percentualAumento)
         {
