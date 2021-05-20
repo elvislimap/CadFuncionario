@@ -9,5 +9,6 @@
     <ProjectReference Include="..\CadFuncionario.Data\CadFuncionario.Data.csproj" />
     <ProjectReference Include="..\CadFuncionario.Domain\CadFuncionario.Domain.csproj" />
     <ProjectReference Include="..\CadFuncionario.Core\CadFuncionario.Core.csproj" />
+    <ProjectReference Include="..\CadFuncionario.AppService.cs\CadFuncionario.Application.csproj" />
   </ItemGroup>
 </Project>
