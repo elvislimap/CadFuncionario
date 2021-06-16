@@ -28,9 +28,11 @@ namespace CadFuncionario.Api.Configurations
                 });
             });
 
-            var connectionString = configuration.GetConnectionString("DbContext");
+            var connectionString = configuration.GetSection("ConnectionsStrings").GetSection("MinhaConexao").Value;
+
             services.AddDbContext<Context>(opt =>
-                opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+                opt.UseSqlServer(connectionString, builder => builder.MigrationsAssembly("CadFuncionario.Api"))
+            );
 
             services.AddControllers()
                 .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null);
