@@ -1,3 +1,4 @@
+using System;
 using Bogus;
 using CadFuncionario.Domain.Entities;
 using Xunit;
@@ -19,7 +20,7 @@ namespace CadFuncionario.Domain.Tests.Entities
         public void Profissao_GerandoId_ComSucesso()
         {
             // Arrange & Act
-            var profissao = new Profissao("Programador Jr", 2000M);
+            var profissao = new Profissao(Guid.Empty, "Programador Jr", 2000M);
 
             // Assert
             Assert.NotNull(profissao.ProfissaoId);
@@ -31,7 +32,7 @@ namespace CadFuncionario.Domain.Tests.Entities
         public void Profissao_AlterarSalarioBase_Manual()
         {
             // Arrange
-            var profissao = new Profissao("Programador Jr", 2000M);
+            var profissao = new Profissao(Guid.Empty, "Programador Jr", 2000M);
             var salarioOriginal = profissao.SalarioBase;
 
             // Act
@@ -47,7 +48,7 @@ namespace CadFuncionario.Domain.Tests.Entities
         {
             // Arrange
             var tamanhoDescricao = _faker.Random.Int(10, 30);
-            var profissao = new Profissao(
+            var profissao = new Profissao(Guid.Empty,
                 _faker.Random.String(tamanhoDescricao),
                 _faker.Finance.Amount(1000, 10000)
             );

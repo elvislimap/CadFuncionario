@@ -20,7 +20,7 @@ namespace CadFuncionario.Validations.Tests
         public void ProfissaoValidation_FalharDadosRequeridos()
         {
             // Arrange
-            var profissao = new Profissao("", 0);
+            var profissao = new Profissao(Guid.Empty, "", 0);
             var validation = new ProfissaoValidation();
 
             // Act
@@ -38,7 +38,7 @@ namespace CadFuncionario.Validations.Tests
         {
             // Arrange
             var quantidadeChar = _faker.Random.Int(81, 200);
-            var profissao = new Profissao(_faker.Random
+            var profissao = new Profissao(Guid.Empty, _faker.Random
                 .String(quantidadeChar), _faker.Random.Decimal(1000, 2000));
 
             var validation = new ProfissaoValidation();
@@ -58,7 +58,7 @@ namespace CadFuncionario.Validations.Tests
         {
             // Arrange
             var quantidadeChar = _faker.Random.Int(10, 80);
-            var profissao = new Profissao(_faker.Random
+            var profissao = new Profissao(Guid.Empty, _faker.Random
             .String(quantidadeChar), _faker.Random.Decimal(2000, 3000));
 
             var validation = new ProfissaoValidation();
@@ -78,7 +78,7 @@ namespace CadFuncionario.Validations.Tests
         {
             // Arrange
             var quantidadeChar = _faker.Random.Int(10, 80);
-            var profissao = new Profissao(_faker.Random
+            var profissao = new Profissao(Guid.Empty, _faker.Random
                 .String(quantidadeChar), _faker.Random.Decimal(2000, 3000));
 
             profissao.StepProfissoes = new List<StepProfissao> {
@@ -102,7 +102,7 @@ namespace CadFuncionario.Validations.Tests
         {
             // Arrange
             var quantidadeChar = _faker.Random.Int(10, 80);
-            var profissao = new Profissao(_faker.Random
+            var profissao = new Profissao(Guid.Empty, _faker.Random
                 .String(quantidadeChar), _faker.Random.Decimal(2000, 3000));
 
             profissao.StepProfissoes = new List<StepProfissao> {

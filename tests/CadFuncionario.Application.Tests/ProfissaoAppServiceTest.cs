@@ -253,10 +253,10 @@ namespace CadFuncionario.Application.Tests
         private Profissao MontarProfissao(bool invalido = false)
         {
             if (invalido)
-                return new Profissao(null, 0);
+                return new Profissao(Guid.Empty, null, 0);
 
             var maxDescricaoProfissao = _faker.Random.Int(15, 80);
-            return new Profissao(_faker.Random.String(maxDescricaoProfissao),
+            return new Profissao(Guid.Empty, _faker.Random.String(maxDescricaoProfissao),
                 _faker.Random.Decimal(2000, 5000));
         }
 

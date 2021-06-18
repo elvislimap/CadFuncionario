@@ -6,9 +6,11 @@ namespace CadFuncionario.Domain.Entities
 {
     public class Profissao : Entity
     {
-        public Profissao(string descricao, decimal salarioBase)
+        public Profissao(Guid profissaoId, string descricao, decimal salarioBase)
         {
-            ProfissaoId = Guid.NewGuid();
+            ProfissaoId = profissaoId == Guid.Empty
+                ? Guid.NewGuid()
+                : profissaoId;
             Descricao = descricao;
             SalarioBase = salarioBase;
         }
@@ -19,7 +21,8 @@ namespace CadFuncionario.Domain.Entities
 
         public virtual ICollection<StepProfissao> StepProfissoes { get; set; }
 
-        public void AlterarSalarioBase(decimal salarioBase) {
+        public void AlterarSalarioBase(decimal salarioBase)
+        {
             SalarioBase = salarioBase;
         }
     }

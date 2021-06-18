@@ -15,11 +15,12 @@ namespace CadFuncionario.Api.Tests.Config
 
         public HttpClient Client;
         public Faker Faker;
+        public Guid ProfissaoId;
 
         public IntegracaoTestsFixture()
         {
             Faker = new Faker("pt_BR");
-            
+
             _factory = new ApiFactory<Startup>();
             Client = _factory.CreateClient(new WebApplicationFactoryClientOptions
             { BaseAddress = new Uri("http://localhost:5000") });
