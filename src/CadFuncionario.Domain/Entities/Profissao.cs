@@ -25,5 +25,10 @@ namespace CadFuncionario.Domain.Entities
         {
             SalarioBase = salarioBase;
         }
+
+        public void AlterarDescricao(string descricao)
+        {
+            Descricao = descricao;
+        }
     }
 }

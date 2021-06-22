@@ -82,7 +82,7 @@ namespace CadFuncionario.Validations.Tests
                 .String(quantidadeChar), _faker.Random.Decimal(2000, 3000));
 
             profissao.StepProfissoes = new List<StepProfissao> {
-                new StepProfissao(Guid.Empty, 0)
+                new StepProfissao(Guid.Empty, Guid.Empty, 0)
             };
 
             var validation = new ProfissaoValidation();
@@ -106,7 +106,7 @@ namespace CadFuncionario.Validations.Tests
                 .String(quantidadeChar), _faker.Random.Decimal(2000, 3000));
 
             profissao.StepProfissoes = new List<StepProfissao> {
-                new StepProfissao(_faker.Random.Guid(),
+                new StepProfissao(Guid.Empty, _faker.Random.Guid(),
                 _faker.Random.Decimal(5, 15))
             };
 

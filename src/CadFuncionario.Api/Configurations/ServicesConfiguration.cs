@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+using System.Text.Json.Serialization;
 using CadFuncionario.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -35,7 +37,8 @@ namespace CadFuncionario.Api.Configurations
             );
 
             services.AddControllers()
-                .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null);
+                .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null)
+                .AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             services.AddSwaggerGen(c =>
             {

@@ -263,9 +263,9 @@ namespace CadFuncionario.Application.Tests
         private StepProfissao MontarStepProfissao(bool invalido = false)
         {
             if (invalido)
-                return new StepProfissao(Guid.Empty, 0);
+                return new StepProfissao(Guid.Empty, Guid.Empty, 0);
 
-            return new StepProfissao(_faker.Random.Guid(),
+            return new StepProfissao(Guid.Empty, _faker.Random.Guid(),
                 _faker.Random.Decimal(5, 20));
         }
     }

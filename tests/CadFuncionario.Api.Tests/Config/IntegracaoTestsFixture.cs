@@ -3,6 +3,7 @@ using System;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 using Bogus;
+using CadFuncionario.Domain.Entities;
 
 namespace CadFuncionario.Api.Tests.Config
 {
@@ -16,6 +17,9 @@ namespace CadFuncionario.Api.Tests.Config
         public HttpClient Client;
         public Faker Faker;
         public Guid ProfissaoId;
+        public Guid StepProfissaoId;
+        public Profissao ProfissaoApi;
+        public StepProfissao StepProfissaoApi;
 
         public IntegracaoTestsFixture()
         {

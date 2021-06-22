@@ -30,7 +30,10 @@ namespace CadFuncionario.Data.Repositories
 
         public async Task AtualizarAsync(Profissao profissao)
         {
-            _context.Profissoes.Update(profissao);
+            _context.Profissoes.Attach(profissao);
+            _context.Entry(profissao).Property(p => p.Descricao).IsModified = true;
+            _context.Entry(profissao).Property(p => p.SalarioBase).IsModified = true;
+
             await _context.SaveChangesAsync();
         }
 

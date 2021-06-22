@@ -1,3 +1,4 @@
+using System;
 using Bogus;
 using CadFuncionario.Domain.Entities;
 using Xunit;
@@ -19,7 +20,7 @@ namespace CadFuncionario.Domain.Tests.Entities
         public void StepProfissao_GerandoId_ComSucesso()
         {
             // Arrange & Act
-            var stepProfissao = new StepProfissao(_faker.Random.Guid(), _faker.Random.Decimal(3.5M, 15));
+            var stepProfissao = new StepProfissao(Guid.Empty, _faker.Random.Guid(), _faker.Random.Decimal(3.5M, 15));
 
             // Assert
             Assert.NotNull(stepProfissao.StepProfissaoId);
@@ -31,6 +32,7 @@ namespace CadFuncionario.Domain.Tests.Entities
         {
             // Arrange
             var stepProfissao = new StepProfissao(
+                Guid.Empty,
                 _faker.Random.Guid(),
                 _faker.Random.Decimal(3.5M, 15)
             );

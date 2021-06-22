@@ -6,9 +6,11 @@ namespace CadFuncionario.Domain.Entities
 {
     public class StepProfissao : Entity
     {
-        public StepProfissao(Guid profissaoId, decimal percentualAumento)
+        public StepProfissao(Guid stepProfissaoId, Guid profissaoId, decimal percentualAumento)
         {
-            StepProfissaoId = Guid.NewGuid();
+            StepProfissaoId = stepProfissaoId == Guid.Empty
+                ? Guid.NewGuid()
+                : stepProfissaoId;
             ProfissaoId = profissaoId;
             PercentualAumento = percentualAumento;
         }

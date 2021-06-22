@@ -1,9 +1,11 @@
 using System;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using CadFuncionario.Api.Tests.Config;
 using CadFuncionario.Domain.Entities;
 using Xunit;
+using System.Collections.Generic;
 
 namespace CadFuncionario.Api.Tests
 {
@@ -35,7 +37,7 @@ namespace CadFuncionario.Api.Tests
             // Assert
             response.EnsureSuccessStatusCode();
 
-            var retornoApi = await response.Content.ReadFromJsonAsync<bool>();
+            var retornoApi = await response.Content.ReadAsAsync<bool>();
             Assert.True(retornoApi);
         }
 
@@ -44,8 +46,9 @@ namespace CadFuncionario.Api.Tests
         public async Task ProfissaoController_AdicionarStep()
         {
             // Arrange
-            var stepProfissao = new StepProfissao(_testsFixture.ProfissaoId,
+            var stepProfissao = new StepProfissao(Guid.Empty, _testsFixture.ProfissaoId,
                 _testsFixture.Faker.Random.Decimal(3, 7));
+            _testsFixture.StepProfissaoId = stepProfissao.StepProfissaoId;
 
             // Act
             var response = await _testsFixture.Client
@@ -54,8 +57,95 @@ namespace CadFuncionario.Api.Tests
             // Assert
             response.EnsureSuccessStatusCode();
 
-            var retornoApi = await response.Content.ReadFromJsonAsync<bool>();
+            var retornoApi = await response.Content.ReadAsAsync<bool>();
             Assert.True(retornoApi);
         }
+
+        [Fact(DisplayName = "Obter profissao"), TestPriority(3)]
+        [Trait("Grupo", "IntegracaoAPI")]
+        public async Task ProfissaoController_Obter()
+        {
+            // Arrange & Act
+            var response = await _testsFixture.Client
+                .GetAsync($"api/profissao/obter/{_testsFixture.ProfissaoId}");
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            _testsFixture.ProfissaoApi = await response.Content.ReadAsAsync<Profissao>();
+
+            Assert.NotNull(_testsFixture.ProfissaoApi);
+            Assert.NotEqual(Guid.Empty, _testsFixture.ProfissaoApi.ProfissaoId);
+        }
+
+        [Fact(DisplayName = "Atualizar profissao"), TestPriority(4)]
+        [Trait("Grupo", "IntegracaoAPI")]
+        public async Task ProfissaoController_Atualizar()
+        {
+            // Arrange
+            _testsFixture.ProfissaoApi
+                .AlterarDescricao($"{_testsFixture.ProfissaoApi.Descricao}-Alterado");
+
+            // Act
+            var response = await _testsFixture.Client
+                .PutAsJsonAsync("api/profissao/atualizar", _testsFixture.ProfissaoApi);
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            var retornoApi = await response.Content.ReadAsAsync<bool>();
+            Assert.True(retornoApi);
+        }
+
+        [Fact(DisplayName = "Obter step profissao"), TestPriority(5)]
+        [Trait("Grupo", "IntegracaoAPI")]
+        public async Task ProfissaoController_ObterStepProfissao()
+        {
+            // Arrange & Act
+            var response = await _testsFixture.Client
+                .GetAsync($"api/profissao/obterstep/{_testsFixture.StepProfissaoId}");
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            _testsFixture.StepProfissaoApi = await response.Content.ReadAsAsync<StepProfissao>();
+
+            Assert.NotNull(_testsFixture.StepProfissaoApi);
+            Assert.NotEqual(Guid.Empty, _testsFixture.StepProfissaoApi.StepProfissaoId);
+        }
+
+        [Fact(DisplayName = "Atualizar step profissao"), TestPriority(6)]
+        [Trait("Grupo", "IntegracaoAPI")]
+        public async Task ProfissaoController_AtualizarStepProfissao()
+        {
+            // Arrange
+            _testsFixture.StepProfissaoApi.AlterarPercentualAumento(1);
+
+            // Act
+            var response = await _testsFixture.Client
+                .PutAsJsonAsync("api/profissao/atualizarstep", _testsFixture.StepProfissaoApi);
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            var retornoApi = await response.Content.ReadAsAsync<bool>();
+            Assert.True(retornoApi);
+        }
+
+        [Fact(DisplayName = "Obter todas as profissoes"), TestPriority(7)]
+        [Trait("Grupo", "IntegracaoAPI")]
+        public async Task ProfissaoController_ObterTodasProfissoes()
+        {
+            // Arrange & Act
+            var response = await _testsFixture.Client.GetAsync("api/profissao/obtertodos");
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            var listaProfissao = await response.Content.ReadAsAsync<List<Profissao>>();
+
+            Assert.NotEmpty(listaProfissao);
+        }
+
     }
 }

@@ -19,7 +19,7 @@ namespace CadFuncionario.Validations.Tests
         public void StepProfissaoValidation_FalharDadosRequeridos()
         {
             // Arrange
-            var stepProfissao = new StepProfissao(Guid.Empty, 0);
+            var stepProfissao = new StepProfissao(Guid.Empty, Guid.Empty, 0);
             var validation = new StepProfissaoValidation();
 
             // Act
@@ -36,7 +36,7 @@ namespace CadFuncionario.Validations.Tests
         public void StepProfissaoValidation_DadosDeEntrada_Valido()
         {
             // Arrange
-            var stepProfissao = new StepProfissao(_faker.Random.Guid(),
+            var stepProfissao = new StepProfissao(Guid.Empty, _faker.Random.Guid(),
                 _faker.Random.Decimal(5, 15));
             var validation = new StepProfissaoValidation();
 
